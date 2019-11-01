@@ -20,7 +20,7 @@ class CustomUserRepository extends Auth0UserRepository
      */
     protected function upsertUser($profile)
     {
-        return User::firstOrCreate(['email' => $profile['email']], [
+        return User::firstOrCreate(['sub' => $profile['sub'], 'email' => $profile['email']], [
             'email' => $profile['email'] ?? '',
             'name' => $profile['name'] ?? '',
             'sub' => $profile['sub'] ?? ''
